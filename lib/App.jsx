@@ -8,18 +8,20 @@ class App extends React.Component {
     this.state = {
       todos: []
     }
+    this.searchListText = '';
     this.listNames = new Array();
     this.listTodos = new Array();
-    this.updateListNames = () => {
+    this.updateListNames = (search) => {
       this.listNames = [];
       this.state.todos.map((element, i)=>{
-        this.listNames.push(element.name);
+        if (element.name.includes(search))
+          this.listNames.push(element.name);
       });
       this.listNames.sort();
     }
   }
   render() {
-    this.updateListNames();
+    this.updateListNames(this.searchListText);
     return (
      <div className="mainWindow">
        <Lists listNames = { this.listNames } addNewList={
@@ -27,7 +29,12 @@ class App extends React.Component {
            const todos = [...this.state.todos, {name: newListName, tasks: []}];
            this.setState({ todos });
          }
-       }/>
+       }
+       searchLists = {(text)=>{
+         this.searchListText = text;
+         this.forceUpdate();
+       }}
+     />
      </div>
     );
   }

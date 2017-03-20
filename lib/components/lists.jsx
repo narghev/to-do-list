@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Lists = ({ listNames, addNewList, searchLists }) => {
+export const Lists = ({ listNames, addNewList, searchLists, selectedList, selectList }) => {
   const submitHandler = (event) => {
     addNewList(event.target.children[0].value);
     event.target.children[0].value = "";
@@ -10,7 +10,14 @@ export const Lists = ({ listNames, addNewList, searchLists }) => {
     searchLists(event.target.value);
   }
   const content = listNames.map((name, id)=>{
-    return (<p className="listNames" key = { id }>{ name }</p>);
+    return (<p className="listNames" id = { id } key = { id }
+      style= {{backgroundColor: `${id == selectedList ? 'green' : 'white'}`}}
+      onClick = { (event)=>{
+        selectList(event.target.id);
+      } }
+      >
+      { name }
+    </p>);
   });
   return (
     <div className="leftWindow">

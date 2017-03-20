@@ -6,7 +6,8 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todos: []
+      todos: [],
+      selected: null
     }
     this.searchListText = '';
     this.listNames = new Array();
@@ -32,7 +33,11 @@ class App extends React.Component {
        }
        searchLists = {(text)=>{
          this.searchListText = text;
-         this.forceUpdate();
+         this.setState({selected: null});
+       }}
+       selectedList = { this.state.selected }
+       selectList = {(s)=>{
+         this.setState({selected: s});
        }}
      />
      </div>

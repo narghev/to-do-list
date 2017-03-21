@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Lists } from './components/lists.jsx';
 import { Todos } from './components/todos.jsx';
 
+let globalId = 0;
+
 class App extends React.Component {
   constructor(){
     super();
@@ -17,7 +19,7 @@ class App extends React.Component {
       this.listNames = [];
       this.state.todos.map((element, i)=>{
         if (element.name.includes(search))
-          this.listNames.push(element.name);
+          this.listNames.push({name: element.name, id: element.id});
       });
       this.listNames.sort();
     }
@@ -28,13 +30,14 @@ class App extends React.Component {
      <div className="mainWindow">
        <Lists listNames = { this.listNames } addNewList={
          (newListName)=>{
-           const todos = [...this.state.todos, {name: newListName, tasks: []}];
+           const todos = [...this.state.todos, {name: newListName, tasks: [], id: globalId}];
            this.setState({ todos });
+           globalId++;
          }
        }
        searchLists = {(text)=>{
          this.searchListText = text;
-         this.setState({selected: null});
+         this.forceUpdate();
        }}
        selectedList = { this.state.selected }
        selectList = {(s)=>{

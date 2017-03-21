@@ -6,11 +6,10 @@ export const Todos = ({ listName, addTodo, tasks }) => {
     event.target.children[0].value = "";
     event.preventDefault();
   }
-  const content = [];
+  let content;
   if (tasks != undefined){
-    const content = tasks.map((task, id)=>{
-      return (<p id = { id } key = { id }
-        >
+    content = tasks.tasks.map((task, id)=>{
+      return (<p id = { id } key = { id }>
         { task }
       </p>);
     });
@@ -18,7 +17,7 @@ export const Todos = ({ listName, addTodo, tasks }) => {
   return (
     <div className="rightWindow">
       <div>
-        <p>{ listName }</p>
+        <p>{ listName === undefined ? "" : listName.name }</p>
         { content }
       </div>
       <form onSubmit = { submitHandler }>

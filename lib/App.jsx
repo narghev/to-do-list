@@ -41,7 +41,14 @@ class App extends React.Component {
          this.setState({selected: s});
        }}
      />
-     <Todos listName={ this.listNames[this.state.selected] }/>
+     <Todos listName={ this.listNames[this.state.selected] }
+       addTodo = {(todoText)=>{
+         const currentTodos = this.state.todos;
+         currentTodos[this.state.selected].tasks.push({task: todoText, checked: false});
+         this.setState({todos: currentTodos});
+       }}
+       tasks = { this.state.todos[this.state.selected] }
+       />
      </div>
     );
   }

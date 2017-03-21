@@ -11,7 +11,7 @@ export const Lists = ({ listNames, addNewList, searchLists, selectedList, select
   }
   const content = listNames.map((name, id)=>{
     return (<p className="listNames" id = { id } key = { id }
-      style= {{backgroundColor: `${id == selectedList ? 'green' : 'white'}`}}
+      style= {{backgroundColor: `${id == selectedList ? '#4F864C' : 'white'}`, color: `${id == selectedList ? 'white' : 'black'}`}}
       onClick = { (event)=>{
         selectList(event.target.id);
       } }

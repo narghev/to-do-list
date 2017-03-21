@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Lists } from './components/lists.jsx';
+import { Todos } from './components/todos.jsx';
 
 class App extends React.Component {
   constructor(){
@@ -40,6 +41,7 @@ class App extends React.Component {
          this.setState({selected: s});
        }}
      />
+     <Todos listName={ this.listNames[this.state.selected] }/>
      </div>
     );
   }

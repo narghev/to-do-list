@@ -23,11 +23,13 @@ export const Lists = ({ listNames, addNewList, searchLists, selectedList, select
     <div className="leftWindow">
       <div>
         <p>Todo Lists</p>
+        <i className="fa fa-search" aria-hidden="true"></i>
         <input type="text" placeholder="Search for list" onChange = { searchHandler }/>
         { content }
       </div>
       <form onSubmit={ submitHandler }>
         <input type="text" placeholder="Enter new list name" className="newList"/>
+        <input type="submit" value="+" style={{left: '16.7%'}}/>
       </form>
     </div>
   )

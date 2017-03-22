@@ -48,6 +48,7 @@ export const Todos = ({ listName, addTodo, list, changeStatus }) => {
       </div>
       <form onSubmit = { submitHandler }>
         <input type="text" placeholder="Enter new Todo" className="newTodo"/>
+        <input type="submit" value="+" style={{left: '96.7%'}}/>
       </form>
     </div>
   )

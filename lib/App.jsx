@@ -23,6 +23,15 @@ class App extends React.Component {
       });
       this.listNames.sort();
     }
+    this.compareAlphabetically = (a, b) => {
+      if (a.task > b.task) {
+        return 1;
+      }
+    }
+    this.compareByChecked = (a, b) => {
+      if (a.checked && !b.checked)
+        return 1;
+    }
   }
   render() {
     this.updateListNames(this.searchListText);
@@ -31,7 +40,7 @@ class App extends React.Component {
        <Lists listNames = { this.listNames } addNewList={
          (newListName)=>{
            const todos = [...this.state.todos, {name: newListName, tasks: [], id: globalId}];
-           this.setState({ todos });
+           this.setState({ todos, selected: globalId });
            globalId++;
          }
        }
@@ -48,9 +57,16 @@ class App extends React.Component {
        addTodo = {(todoText)=>{
          const currentTodos = this.state.todos;
          currentTodos[this.state.selected].tasks.push({task: todoText, checked: false});
+         currentTodos[this.state.selected].tasks.sort(this.compareAlphabetically);
          this.setState({todos: currentTodos});
        }}
-       tasks = { this.state.todos[this.state.selected] }
+       list = { this.state.todos[this.state.selected] }
+       changeStatus = {(index)=>{
+         const currentTodos = this.state.todos;
+         currentTodos[this.state.selected].tasks[index].checked = !currentTodos[this.state.selected].tasks[index].checked;
+         currentTodos[this.state.selected].tasks.sort(this.compareByChecked);
+         this.setState({todos: currentTodos});
+       }}
        />
      </div>
     );

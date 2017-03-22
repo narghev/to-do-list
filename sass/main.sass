@@ -22,6 +22,8 @@ body
       border-right: 1px solid $borderC
       flex-direction: column
       justify-content: space-between
+      div
+        overflow-y: auto
       p
         font-size: 140%
         padding-left: 20px
@@ -61,13 +63,14 @@ body
       width: 80%
       flex-direction: column
       justify-content: space-between
+      div
+        overflow-y: auto
       p
         font-size: 200%
         margin-left: 7%
         margin-top: 2%
         padding-left: 20px
         padding-top: 20px
-        margin-bottom: 10px
         color: $blackText
       .newTodo
         width: 96%
@@ -82,3 +85,17 @@ body
         text-indent: 10px
         background-color: white
         text-indent: 10px
+      .task
+        width: 85%
+        margin: auto
+        margin-bottom: 20px
+        box-shadow: 3px 5px 12px #888888
+        font-size: 130%
+        input
+          margin-left: 1%
+          margin-right: 2%
+      span
+        display: inherit
+        margin-left: 85%
+        margin-bottom: 2%
+        color: #4c4c4c

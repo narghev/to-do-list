@@ -11,7 +11,7 @@ export const Lists = ({ listNames, addNewList, searchLists, selectedList, select
   }
   const content = listNames.map((element, id)=>{
     return (<p className="listNames" id = { element.id } key = { id }
-      style = {{backgroundColor: `${element.id == selectedList ? '#4F864C' : 'white'}`, color: `${id == selectedList ? 'white' : 'black'}`}}
+      style = {{backgroundColor: `${element.id == selectedList ? '#4F864C' : 'white'}`, color: `${element.id == selectedList ? 'white' : 'black'}`}}
       onClick = { (event)=>{
         selectList(event.target.id);
       } }
@@ -29,7 +29,7 @@ export const Lists = ({ listNames, addNewList, searchLists, selectedList, select
       </div>
       <form onSubmit={ submitHandler }>
         <input type="text" placeholder="Enter new list name" className="newList"/>
-        <input type="submit" value="+" style={{left: '16.7%'}}/>
+        <input type="submit" value="+" style={{left: '17%'}}/>
       </form>
     </div>
   )
